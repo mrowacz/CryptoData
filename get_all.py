@@ -2,8 +2,8 @@ from cd.HistoryCollector import HistoryCollector
 from cd.Stock import Stock
 
 if __name__ == "__main__":
-    start_date = "01/12/2017"
-    stop_date = "01/01/2018"
+    start_date = "01/08/2017"
+    stop_date = "30/01/2018"
     h = HistoryCollector("ETH", start_date, stop_date)
     # j = h.run("LSKETH", "./out/")
 
