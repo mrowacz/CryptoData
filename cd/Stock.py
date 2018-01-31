@@ -52,4 +52,5 @@ class Stock:
             if r.status_code == 200:
                 return json.loads(r.text)
             print(r.text)
+            time.sleep(5)
         return None

@@ -14,15 +14,21 @@ class HistoryCollector:
         self.data = []
 
     def run(self):
-        print(str(self.start_date) + " " + str(self.stop_date))
-        time_spans = frange(self.start_date, self.stop_date, self.MAX_STEP)
-        for index, span in enumerate(time_spans):
-            print("loop " + str(index) + "/" + str(len(time_spans)))
-            data = Stock.get_klines("BTSETH", "1m", span)
+        c = "LSKETH"
+        with open(c + ".log", "w") as f:
+            print(str(self.start_date) + " " + str(self.stop_date))
+            time_spans = frange(self.start_date, self.stop_date, self.MAX_STEP)
+            for index, span in enumerate(time_spans):
+                print("loop " + str(index) + "/" + str(len(time_spans)))
+                data = Stock.get_klines(c, "1m", span)
+                print(data)
+                for e in data:
+                    f.write(str(e) + "\n")
+                f.flush()
 
 
 if __name__ == "__main__":
     start_date = "01/12/2017"
-    stop_date = "16/01/2018"
+    stop_date = "01/01/2018"
     h = HistoryCollector("ETH", start_date, stop_date)
     j = h.run()
